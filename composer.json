@@ -1,0 +1,51 @@
+{
+  "name": "splitstack/laravel-enum-friendly",
+  "type": "library",
+  "version": "0.1.0",
+  "description": "Make your Laravel enums friendly with TypeScript, forms, translations, and more",
+  "keywords": [
+    "laravel",
+    "enum",
+    "typescript",
+    "friendly",
+    "forms",
+    "translations"
+  ],
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^9.0|^10.0|^11.0",
+    "illuminate/console": "^9.0|^10.0|^11.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0|^10.0",
+    "orchestra/testbench": "^7.0|^8.0"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Splitstack\\EnumFriendly\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Splitstack\\EnumFriendly\\Tests\\": "src/Tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Splitstack\\EnumFriendly\\EnumFriendlyServiceProvider"
+      ]
+    }
+  },
+  "authors": [
+    {
+      "name": "EmilienKopp"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
