@@ -4,6 +4,7 @@
 <!-- [![Coverage Status](https://img.shields.io/coveralls/github/emilienkopp/EnumFriendly/main.svg?style=flat-square)](https://coveralls.io/github/emilienkopp/EnumFriendly?branch=main) -->
 ![PHP Version](https://img.shields.io/badge/php-^8.1-blue.svg?style=flat-square)
 ![Laravel Version](https://img.shields.io/badge/laravel-^11.0-orange.svg?style=flat-square)
+[![Total Downloads](https://img.shields.io/packagist/dt/splitstack/laravel-enum-friendly.svg?style=flat-square)](https://packagist.org/packages/splitstack/laravel-enum-friendly)
 
 ## Introduction
 
