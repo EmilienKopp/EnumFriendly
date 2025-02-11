@@ -1,7 +1,7 @@
 # EnumFriendly
 
 ![Tests](https://img.shields.io/github/actions/workflow/status/emilienkopp/EnumFriendly/tests.yml?label=tests)
-[![Coverage Status](https://img.shields.io/coveralls/github/emilienkopp/EnumFriendly/main.svg?style=flat-square)](https://coveralls.io/github/emilienkopp/EnumFriendly?branch=main)
+<!-- [![Coverage Status](https://img.shields.io/coveralls/github/emilienkopp/EnumFriendly/main.svg?style=flat-square)](https://coveralls.io/github/emilienkopp/EnumFriendly?branch=main) -->
 ![PHP Version](https://img.shields.io/badge/php-^8.1-blue.svg?style=flat-square)
 ![Laravel Version](https://img.shields.io/badge/laravel-^11.0-orange.svg?style=flat-square)
 
