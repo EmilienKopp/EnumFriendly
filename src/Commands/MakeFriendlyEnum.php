@@ -28,7 +28,7 @@ class MakeFriendlyEnum extends Command
     $type = $this->option('type');
     $isUpper = $this->option('upper');
 
-    $stub = file_get_contents(__DIR__ . '/stubs/friendly-enum.stub');
+    $stub = file_get_contents(__DIR__ . '/Stubs/friendly-enum.stub');
 
     $cases = collect($values)->map(function ($value) use ($type, $isUpper) {
       $split = explode(':', $value);
