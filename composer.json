@@ -2,7 +2,7 @@
   "name": "splitstack/laravel-enum-friendly",
   "type": "library",
   "version": "0.1.0",
-  "description": "Make your Laravel enums friendly with TypeScript, forms, translations, and more",
+  "description": "Make your Laravel enums friendly with TypeScript, selects, and many more convenient features",
   "keywords": [
     "laravel",
     "enum",

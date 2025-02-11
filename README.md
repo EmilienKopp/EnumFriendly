@@ -7,7 +7,15 @@
 
 ## Introduction
 
-EnumFriendly is a PHP package that provides a friendly interface for working with enums in Laravel applications.
+EnumFriendly is a powerful PHP package that enhances your Laravel application's enum experience. It provides a friendly interface for working with enums, making them more versatile and easier to integrate with TypeScript, forms, translations, and more.
+
+With EnumFriendly, you can:
+- Generate enum classes with a simple artisan command
+- Convert enum values to TypeScript types
+- Create form-friendly select options
+- Generate validation rules automatically
+- Access readable labels and collections
+- And much more!
 
 ## Installation
 
@@ -17,11 +25,13 @@ You can install the package via composer:
 composer require splitstack/laravel-enum-friendly
 ```
 
+The package will automatically register its service provider.
+
 ## Usage
 
 ### Creating a Friendly Enum
 
-You can use the `MakeFriendlyEnum` command to create a new friendly enum.
+You can use the `MakeFriendlyEnum` command to create a new friendly enum:
 
 ```bash
 php artisan split:enum {name} {--type= : string or int, the backed type} {--u|upper : Convert the case name to uppercase} {values*}
@@ -49,8 +59,7 @@ enum Status: string
 
 ### Using the ExtendedEnum Trait
 
-The `ExtendedEnum` trait provides additional methods for your enums,
-(string-backed, int-backed, or plain).
+The `ExtendedEnum` trait provides additional methods for your enums (string-backed, int-backed, or plain):
 
 ```php
 use Splitstack\EnumFriendly\Traits\ExtendedEnum;
@@ -64,41 +73,84 @@ enum MyEnum: string
 }
 ```
 
-#### Methods
+#### Available Methods
 
-- `values()`: Get the enum values.
-- `collect()`: Get the enum values as a collection.
-- `implode(string $glue = ',')`: Implode the enum values.
-- `toSelectOptions()`: Get the enum values as select options.
-- `keys()`: Get the enum keys.
-- `readable()`: Get the enum keys in a readable format.
-- `random()`: Get a random enum value.
-- `toTypeScript()`: Make the enum friendly for TypeScript.
-- `rules(array $extra = [])`: Make the enum friendly for validation.
+| Method | Description | Example Output |
+|--------|-------------|----------------|
+| `values()` | Get the enum values | `['active', 'inactive']` |
+| `collect()` | Get the enum values as a collection | Collection of `['active', 'inactive']` |
+| `implode(string $glue = ',')` | Implode the enum values | `'active,inactive'` |
+| `toSelectOptions()` | Get the enum values as select options | `[['value' => 'active', 'label' => 'Active'], ...]` |
+| `keys()` | Get the enum keys | `['ACTIVE', 'INACTIVE']` |
+| `readable()` | Get the enum keys in a readable format | `['Active', 'Inactive']` |
+| `random()` | Get a random enum value | `'active'` or `'inactive'` |
+| `toTypeScript()` | Make the enum friendly for TypeScript | `['type' => 'Status', 'values' => [...]]` |
+| `rules(array $extra = [])` | Make the enum friendly for validation | `['required', 'string', 'in:active,inactive']` |
 
-Example:
+### TypeScript Integration
+
+The `toTypeScript()` method generates TypeScript-friendly type definitions:
 
 ```php
-Status::values(); // ['active', 'inactive']
-Status::collect(); // Collection of ['active', 'inactive']
-Status::implode(','); // 'active,inactive'
-Status::keys(); // ['ACTIVE', 'INACTIVE']
-Status::readable(); // ['Active', 'Inactive']
-Status::random(); // 'active' or 'inactive'
-Status::toTypeScript(); // ['type' => 'Status', 'values' => ['active', 'inactive']]
-Status::rules(); // ['required', 'string', 'in:active,inactive']
-Status::toSelectOptions(); // Collection of select options 
-// [ ['value' => 'active', 'label' => 'Active'], ['value' => 'inactive', 'label' => 'Inactive'] ] 
+Status::toTypeScript();
+// Returns:
+// [
+//   'type' => 'Status',
+//   'values' => ['active', 'inactive']
+// ]
+```
+
+### Form Integration
+
+Create select options for your forms easily:
+
+```php
+Status::toSelectOptions();
+// Returns:
+// [
+//   ['value' => 'active', 'label' => 'Active'],
+//   ['value' => 'inactive', 'label' => 'Inactive']
+// ]
+```
+
+### Validation Rules
+
+Generate Laravel validation rules automatically:
+
+```php
+Status::rules(['required']);
+// Returns: ['required', 'string', 'in:active,inactive']
 ```
 
 ## Testing
 
-To run the tests, use the following command:
+Run the test suite:
 
 ```bash
 composer test
 ```
 
+Generate test coverage report:
+
+```bash
+composer test:coverage
+```
+
+## Contributing
+
+Contributions are welcome! Feel free to:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Credits
+
+- [EmilienKopp](https://github.com/emilienkopp)
+- [All Contributors](../../contributors)
