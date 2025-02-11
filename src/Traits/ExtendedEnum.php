@@ -96,7 +96,7 @@ trait ExtendedEnum
    */
   public static function rules(array $extra = []): array
   {
-    return array_merge(['required', 'string', 'in:' . self::implode()], $extra);
+    return array_merge(['string', 'in:' . self::implode()], $extra);
   }
 
 
