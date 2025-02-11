@@ -82,12 +82,13 @@ Example:
 Status::values(); // ['active', 'inactive']
 Status::collect(); // Collection of ['active', 'inactive']
 Status::implode(','); // 'active,inactive'
-Status::toSelectOptions(); // Collection of select options { key: 'active', value: 'Active' }, { key: 'inactive', value: 'Inactive' }
 Status::keys(); // ['ACTIVE', 'INACTIVE']
 Status::readable(); // ['Active', 'Inactive']
 Status::random(); // 'active' or 'inactive'
 Status::toTypeScript(); // ['type' => 'Status', 'values' => ['active', 'inactive']]
 Status::rules(); // ['required', 'string', 'in:active,inactive']
+Status::toSelectOptions(); // Collection of select options 
+// [ ['value' => 'active', 'label' => 'Active'], ['value' => 'inactive', 'label' => 'Inactive'] ] 
 ```
 
 ## Testing
