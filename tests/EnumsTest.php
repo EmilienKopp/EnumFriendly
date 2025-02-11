@@ -175,13 +175,13 @@ class EnumsTest extends TestCase
     {
         // String backed enum
         $strRules = TestStatusStr::rules();
-        $strRulesExtra = TestStatusStr::rules(['nullable']);
+        $strRulesExtra = TestStatusStr::rules(['required']);
         $this->assertEquals(
-            ['required', 'string', 'in:pending,in_progress,completed'],
+            ['string', 'in:pending,in_progress,completed'],
             $strRules
         );
         $this->assertEquals(
-            ['required', 'string', 'in:pending,in_progress,completed', 'nullable'],
+            ['required', 'string', 'in:pending,in_progress,completed'],
             $strRulesExtra
         );
 
@@ -189,23 +189,23 @@ class EnumsTest extends TestCase
         $intRules = TestStatusInt::rules();
         $intRulesExtra = TestStatusInt::rules(['nullable']);
         $this->assertEquals(
-            ['required', 'string', 'in:1,2,3'],
+            ['string', 'in:1,2,3'],
             $intRules
         );
         $this->assertEquals(
-            ['required', 'string', 'in:1,2,3', 'nullable'],
+            ['nullable', 'string', 'in:1,2,3'],
             $intRulesExtra
         );
 
         // Unbacked enum
         $plainRules = TestStatusUnbacked::rules();
-        $plainRulesExtra = TestStatusUnbacked::rules(['nullable']);
+        $plainRulesExtra = TestStatusUnbacked::rules(['required']);
         $this->assertEquals(
-            ['required', 'string', 'in:PENDING,IN_PROGRESS,COMPLETED'],
+            ['string', 'in:PENDING,IN_PROGRESS,COMPLETED'],
             $plainRules
         );
         $this->assertEquals(
-            ['required', 'string', 'in:PENDING,IN_PROGRESS,COMPLETED', 'nullable'],
+            ['required', 'string', 'in:PENDING,IN_PROGRESS,COMPLETED'],
             $plainRulesExtra
         );
     }
