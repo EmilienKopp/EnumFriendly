@@ -14,7 +14,7 @@ EnumFriendly is a PHP package that provides a friendly interface for working wit
 You can install the package via composer:
 
 ```bash
-composer require yourusername/enum-friendly
+composer require splitstack/laravel-enum-friendly
 ```
 
 ## Usage
