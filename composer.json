@@ -47,6 +47,6 @@
       "name": "EmilienKopp"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true
 }
