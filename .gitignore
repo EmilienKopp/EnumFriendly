@@ -9,3 +9,5 @@ vendor/
 
 coverage/
 coverage.txt
+
+*.old
