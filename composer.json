@@ -21,13 +21,7 @@
     "phpunit/phpunit": "^9.0|^10.0",
     "orchestra/testbench": "^7.0|^8.0"
   },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../EnumFriendlyCore"
-    }
-  ],
-  "scripts": {
+"scripts": {
     "test": "./vendor/bin/phpunit --colors=always --no-coverage",
     "test:coverage": "docker compose exec php vendor/bin/phpunit --colors=always --coverage-html coverage && start coverage/index.html"
   },
