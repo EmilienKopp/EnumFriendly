@@ -16,14 +16,14 @@ class ArrayableCollectionProxyTest extends TestCase
         ]));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_counts_items(): void
     {
         $this->assertCount(2, $this->proxy());
         $this->assertCount(0, $this->proxy([]));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_is_iterable(): void
     {
         $results = [];
@@ -34,7 +34,7 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertEquals('Active', $results[0]['name']);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_supports_array_access_read(): void
     {
         $proxy = $this->proxy();
@@ -43,7 +43,7 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertFalse(isset($proxy[99]));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_throws_on_array_set(): void
     {
         $this->expectException(\BadMethodCallException::class);
@@ -51,7 +51,7 @@ class ArrayableCollectionProxyTest extends TestCase
         $proxy[0] = ['name' => 'New', 'value' => 'new'];
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_throws_on_array_unset(): void
     {
         $this->expectException(\BadMethodCallException::class);
@@ -59,7 +59,7 @@ class ArrayableCollectionProxyTest extends TestCase
         unset($proxy[0]);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_converts_to_array(): void
     {
         $this->assertEquals([
@@ -68,7 +68,7 @@ class ArrayableCollectionProxyTest extends TestCase
         ], $this->proxy()->toArray());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_serializes_to_json(): void
     {
         $json = $this->proxy()->toJson();
@@ -76,7 +76,7 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertStringContainsString('active', $json);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_casts_to_string_as_json(): void
     {
         $proxy = $this->proxy();
@@ -84,7 +84,7 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertEquals($proxy->toJson(), (string) $proxy);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_implements_json_serializable(): void
     {
         $encoded = json_encode($this->proxy());
@@ -92,13 +92,13 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertJson($encoded);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_implements_stringable(): void
     {
         $this->assertInstanceOf(\Stringable::class, $this->proxy());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_returns_underlying_collection(): void
     {
         $collection = $this->proxy()->collect();
@@ -106,7 +106,7 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertCount(2, $collection);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_proxies_collection_methods(): void
     {
         $proxy = $this->proxy();
@@ -121,14 +121,14 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertCount(1, $filtered);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_throws_on_unknown_method(): void
     {
         $this->expectException(\BadMethodCallException::class);
         $this->proxy()->nonExistentMethod();
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_round_trips_through_serialize(): void
     {
         $proxy = $this->proxy();
@@ -139,7 +139,7 @@ class ArrayableCollectionProxyTest extends TestCase
         $this->assertEquals($proxy->toArray(), $restored->toArray());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_handles_empty_collection(): void
     {
         $proxy = $this->proxy([]);

@@ -12,7 +12,7 @@ use UnitEnum;
 
 class EnumsTest extends TestCase
 {
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_all_values()
     {
         // String backed enum
@@ -38,7 +38,7 @@ class EnumsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_collect_values()
     {
         // String backed enum
@@ -66,7 +66,7 @@ class EnumsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_implode_values()
     {
         // String backed enum
@@ -82,7 +82,7 @@ class EnumsTest extends TestCase
         $this->assertEquals('PENDING|IN_PROGRESS|COMPLETED', TestStatusUnbacked::implode('|'));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_convert_to_select_options()
     {
         // String backed enum
@@ -113,7 +113,7 @@ class EnumsTest extends TestCase
         ], $plainOptions->toArray());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_all_as_name_value_pairs()
     {
         $strAll = TestStatusStr::all();
@@ -141,7 +141,7 @@ class EnumsTest extends TestCase
         ], $plainAll->toArray());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_keys()
     {
         $expected = ['PENDING', 'IN_PROGRESS', 'COMPLETED'];
@@ -152,7 +152,7 @@ class EnumsTest extends TestCase
         $this->assertEquals($expected, TestStatusUnbacked::keys());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_readable_values()
     {
         $expected = ['Pending', 'In Progress', 'Completed'];
@@ -163,7 +163,7 @@ class EnumsTest extends TestCase
         $this->assertEquals($expected, TestStatusUnbacked::readable());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_random_value()
     {
         // String backed enum
@@ -179,7 +179,7 @@ class EnumsTest extends TestCase
         $this->assertContains($plainRandom, ['PENDING', 'IN_PROGRESS', 'COMPLETED']);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_convert_to_typescript()
     {
         // String backed enum
@@ -200,7 +200,7 @@ class EnumsTest extends TestCase
         $this->assertEquals(['PENDING', 'IN_PROGRESS', 'COMPLETED'], $plainTs['values']);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_generate_validation_rules()
     {
         // String backed enum
@@ -240,7 +240,7 @@ class EnumsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_generate_comment_strings()
     {
         // String backed enum
@@ -274,7 +274,7 @@ class EnumsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_return_safe_enum_instance_or_null_regardless_of_passed_param_type()
     {
 
@@ -328,7 +328,7 @@ class EnumsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_return_safe_value_regardless_of_passed_param_type()
     {
 
@@ -382,7 +382,7 @@ class EnumsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_convert_to_readable_array()
     {
         // String backed enum
@@ -410,7 +410,7 @@ class EnumsTest extends TestCase
         ], $unbackedReadableArray);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_convert_to_array()
     {
         // String backed enum
@@ -438,7 +438,7 @@ class EnumsTest extends TestCase
         ], $unbackedArray);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_random_case()
     {
         // String backed enum
@@ -457,7 +457,7 @@ class EnumsTest extends TestCase
         $this->assertContains($unbackedRandomCase, TestStatusUnbacked::cases());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_value_with_fallback()
     {
         // String backed enum - valid value
@@ -485,7 +485,7 @@ class EnumsTest extends TestCase
         $this->assertEquals(TestStatusUnbacked::COMPLETED, $result);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_check_if_value_exists()
     {
         // String backed enum
@@ -510,7 +510,7 @@ class EnumsTest extends TestCase
         $this->assertFalse(TestStatusUnbacked::hasValue('INVALID'));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_filter_cases_by_names()
     {
         // String backed enum - only specific cases
@@ -538,7 +538,7 @@ class EnumsTest extends TestCase
         $this->assertEmpty($empty);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_filter_cases_by_values()
     {
         // String backed enum - only specific values
@@ -567,7 +567,7 @@ class EnumsTest extends TestCase
         $this->assertContains(1, $nonStrictResult);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_exclude_cases_by_names()
     {
         // String backed enum - exclude specific cases
@@ -595,7 +595,7 @@ class EnumsTest extends TestCase
         $this->assertCount(3, $all);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_exclude_cases_by_values()
     {
         // String backed enum - exclude specific values
@@ -626,7 +626,7 @@ class EnumsTest extends TestCase
         $this->assertContains(3, $nonStrictResult);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_count_enum_cases()
     {
         // All test enums have 3 cases
@@ -635,7 +635,7 @@ class EnumsTest extends TestCase
         $this->assertEquals(3, TestStatusUnbacked::count());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_check_if_enum_is_backed()
     {
         // String and int backed enums should return true
@@ -646,7 +646,7 @@ class EnumsTest extends TestCase
         $this->assertFalse(TestStatusUnbacked::isBacked());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_get_description()
     {
         // Since our test enums don't have getDescription methods, 
@@ -661,7 +661,7 @@ class EnumsTest extends TestCase
         $this->assertNull($completed->description());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_compare_enum_cases()
     {
         // String backed enum comparisons
@@ -707,7 +707,7 @@ class EnumsTest extends TestCase
         $this->assertFalse($completed->is('PENDING'));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_check_if_enum_is_in_array()
     {
         // String backed enum
@@ -752,7 +752,7 @@ class EnumsTest extends TestCase
         $this->assertFalse($completed->in([]));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_can_convert_to_json_array()
     {
         $arr = TestStatusStr::toJsonArray();
