@@ -21,11 +21,11 @@ jobs:
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-    - name: Install Larastan
-      run: composer require --dev larastan/larastan --no-interaction --no-progress --prefer-dist --with-all-dependencies
+    - name: Install PHPStan
+      run: composer global require phpstan/phpstan --no-interaction --no-progress --prefer-dist
 
     - name: Run PHPStan
-      run: vendor/bin/phpstan analyse --no-progress
+      run: ~/.composer/vendor/bin/phpstan analyse --no-progress
 
   test:
     runs-on: ubuntu-latest
