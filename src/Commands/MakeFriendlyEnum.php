@@ -21,7 +21,7 @@ class MakeFriendlyEnum extends Command
 
   protected $description = 'Create a new friendly enum';
 
-  public function handle()
+  public function handle(): void
   {
     $name = $this->argument('name');
     $values = $this->argument('values');

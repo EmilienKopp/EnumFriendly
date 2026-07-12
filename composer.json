@@ -19,10 +19,14 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0|^10.0|^11.0",
-    "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0"
+    "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
+    "phpstan/phpstan": "^1.12",
+    "phpstan/extension-installer": "^1.4",
+    "larastan/larastan": "^2.11"
   },
 "scripts": {
     "test": "./vendor/bin/phpunit --colors=always --no-coverage",
+    "analyse": "./vendor/bin/phpstan analyse --no-progress",
     "test:coverage": "docker compose exec php vendor/bin/phpunit --colors=always --coverage-html coverage && start coverage/index.html"
   },
   "license": "MIT",
@@ -49,5 +53,10 @@
     }
   ],
   "minimum-stability": "stable",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  }
 }

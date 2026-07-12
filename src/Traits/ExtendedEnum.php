@@ -6,6 +6,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Enum;
+use Splitstack\EnumFriendly\Support\ArrayableCollectionProxy;
 use Splitstack\EnumFriendly\Traits\EnumFriendly;
 
 /**
@@ -52,6 +53,29 @@ trait ExtendedEnum
     public static function toSelectOptions(): Collection
     {
         return collect(self::toOptionsArray());
+    }
+
+    /**
+     * Convert enum cases to an associative-style Collection using 'name' and 'value' keys.
+     *
+     * Similar to toSelectOptions() but maps to ['name' => '...', 'value' => '...']
+     * instead of ['label' => '...', 'value' => '...'].
+     *
+     * @return \Splitstack\EnumFriendly\Support\ArrayableCollectionProxy<int, array{name: string, value: string|int}>
+     *
+     * @example
+     * UserStatus::all()
+     * // Returns ArrayableCollectionProxy of:
+     * // [['name' => 'Active', 'value' => 'active'], ['name' => 'Inactive', 'value' => 'inactive']]
+     */
+    public static function all(): ArrayableCollectionProxy
+    {
+        return new ArrayableCollectionProxy(
+            collect(self::toOptionsArray())->map(fn($item) => [
+                'name'  => $item['name'],
+                'value' => $item['value'],
+            ])
+        );
     }
 
     /**

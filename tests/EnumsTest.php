@@ -4,6 +4,7 @@ namespace Splitstack\EnumFriendly\Tests;
 
 use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Collection;
+use Splitstack\EnumFriendly\Support\ArrayableCollectionProxy;
 use Splitstack\EnumFriendly\Tests\Enums\TestStatusStr;
 use Splitstack\EnumFriendly\Tests\Enums\TestStatusInt;
 use Splitstack\EnumFriendly\Tests\Enums\TestStatusUnbacked;
@@ -110,6 +111,34 @@ class EnumsTest extends TestCase
             ['value' => 'IN_PROGRESS', 'label' => 'In Progress', 'name' => 'In Progress'],
             ['value' => 'COMPLETED', 'label' => 'Completed', 'name' => 'Completed']
         ], $plainOptions->toArray());
+    }
+
+    /** @test */
+    public function it_can_get_all_as_name_value_pairs()
+    {
+        $strAll = TestStatusStr::all();
+        $this->assertInstanceOf(ArrayableCollectionProxy::class, $strAll);
+        $this->assertEquals([
+            ['name' => 'Pending', 'value' => 'pending'],
+            ['name' => 'In Progress', 'value' => 'in_progress'],
+            ['name' => 'Completed', 'value' => 'completed'],
+        ], $strAll->toArray());
+
+        $intAll = TestStatusInt::all();
+        $this->assertInstanceOf(ArrayableCollectionProxy::class, $intAll);
+        $this->assertEquals([
+            ['name' => 'Pending', 'value' => 1],
+            ['name' => 'In Progress', 'value' => 2],
+            ['name' => 'Completed', 'value' => 3],
+        ], $intAll->toArray());
+
+        $plainAll = TestStatusUnbacked::all();
+        $this->assertInstanceOf(ArrayableCollectionProxy::class, $plainAll);
+        $this->assertEquals([
+            ['name' => 'Pending', 'value' => 'PENDING'],
+            ['name' => 'In Progress', 'value' => 'IN_PROGRESS'],
+            ['name' => 'Completed', 'value' => 'COMPLETED'],
+        ], $plainAll->toArray());
     }
 
     /** @test */
